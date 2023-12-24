@@ -2,19 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function index() {
-        $users = User::all();
-        // foreach ($users as $user) {
-        //     $user->posts = Post::where('user_id', $user->id)->get();
+    public function login(Request $request) {
+        $incomingFields = $request->validate([
+            'loginname' => 'required',
+            'loginpassword' => 'required'
+        ]);
 
-        // }
-        // dd($users[0]->posts);
-        return view('users.index', compact('users'));
+        if (auth()->attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
+            $request->session()->regenerate();
+        }
+
+        return redirect('/');
+    }
+
+    public function logout() {
+        auth()->logout();
+        return redirect('/');
+    }
+
+    public function register(Request $request) {
+        $incomingFields = $request->validate([
+            'name' => ['required', Rule::unique('users', 'name')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => ['required', 'min:6', 'max:200']
+        ]);
+
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
+        $user = User::create($incomingFields);
+        auth()->login($user);
+        return redirect('/');
     }
 }

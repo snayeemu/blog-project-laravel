@@ -1,10 +1,12 @@
 <?php
 
+
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,14 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // $posts = [];
+    // if (auth()->check()) {
+    //     $posts = auth()->user()->usersCoolPosts()->latest()->get();
+    // }
+    $posts = Post::all();
+    return view('home', ['posts' => $posts]);
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,3 +49,15 @@ Route::delete("lists/{task_id}", [ListController::class, 'destroy'])->name("list
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+
+// route for our blog
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/login', [UserController::class, 'login']);
+
+// Blog post related routes
+Route::post('/create-post', [PostController::class, 'createPost']);
+Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
+Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
+Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
