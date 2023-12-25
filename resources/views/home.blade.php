@@ -28,15 +28,22 @@
   <div style="border: 3px solid black;">
     <h2>All Posts</h2>
     @foreach($posts as $post)
-    <div style="background-color: gray; padding: 10px; margin: 10px;">
-      <h3>{{$post['title']}} by {{$post->user->name}}</h3>
-      {{$post['body']}}
-      <p><a href="/edit-post/{{$post->id}}">Edit</a></p>
-      <form action="/delete-post/{{$post->id}}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button>Delete</button>
-      </form>
+    <div class="bg-light pt-4 px-4 m-3 rounded">
+      <h1 class="fw-bold fs-1 mb-0 ">{{$post['title']}}</h1>
+      <p class="mt-0 text-secondary fw-lighter mb-1">by {{$post->user->name}}</p>
+      <hr class="bg-secondary my-0">
+      <p class="mt-1 text-secondary fw-lighter mb-1">Updated at {{$post->updated_at}}</p>
+      <p class="fs-5">{{$post['body']}}</p>
+
+      <div class="d-flex gap-2 mb-0 ">
+        <p class="btn btn-sm btn-warning mb-0"><a class="text-white text-decoration-none" href="/edit-post/{{$post->id}}">Edit</a></p>
+        <form class="mb-0" action="/delete-post/{{$post->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-sm btn-danger ">Delete</button>
+        </form>
+      </div>
+      <p class="mt-0 text-secondary fw-lighter pb-2">This actions only available for your own posts.</p>
     </div>
     @endforeach
   </div>
