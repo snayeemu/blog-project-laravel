@@ -94,7 +94,7 @@
 
         </div>
 
-        <div style="border: 3px solid black;" class="pt-3">
+        <div style="border: 3px solid black;" class="pt-3 mt-5">
             <h2 class="ms-3">Create a New Post:</h2>
             {{-- <form action="/create-post" method="POST">
                 @csrf
