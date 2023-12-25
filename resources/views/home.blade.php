@@ -163,6 +163,8 @@
 
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
+            <p class="text-secondary">Already have an account? Please <a class="text-decoration-none"
+                    href="/login">login</a></p>
         </div>
 
         {{-- <div style="border: 3px solid black;">
@@ -175,25 +177,7 @@
     </form>
   </div> --}}
 
-        <div class="w-50 mx-auto border border-black rounded p-2 m-3">
-            <h2>Login</h2>
-            <form action="/login" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="text" name="loginname" class="form-control mb-2" id="exampleInputEmail1"
-                        aria-describedby="emailHelp">
 
-
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" name='loginpassword' class="form-control" id="exampleInputPassword1">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Register</button>
-            </form>
-        </div>
 
     @endauth
 
