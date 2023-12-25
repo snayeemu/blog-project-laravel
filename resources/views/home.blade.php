@@ -11,24 +11,6 @@
 <body>
 
     @auth
-        <p>Congrats you are logged in.</p>
-        <form action="/logout" method="POST">
-            @csrf
-            <button>Log out</button>
-        </form>
-
-        <div style="border: 3px solid black;">
-            <h2>Create a New Post</h2>
-            <form action="/create-post" method="POST">
-                @csrf
-                <input type="text" name="title" placeholder="post title">
-                <textarea name="body" placeholder="body content..."></textarea>
-                <button>Save Post</button>
-            </form>
-        </div>
-
-
-
         <div style="border: 3px solid black;">
             <h2>All Posts</h2>
 
@@ -111,6 +93,41 @@
 
 
         </div>
+
+        <div style="border: 3px solid black;" class="pt-3">
+            <h2 class="ms-3">Create a New Post:</h2>
+            {{-- <form action="/create-post" method="POST">
+                @csrf
+                <input type="text" name="title" placeholder="post title">
+                <textarea name="body" placeholder="body content..."></textarea>
+                <button>Save Post</button>
+            </form> --}}
+
+            <form action="/create-post" method="POST" class="w-75 mx-auto">
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                    <input type="text" name="title" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Post Title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                    <textarea class="form-control" name="body" id="exampleFormControlTextarea1" placeholder="body content..."
+                        rows="3"></textarea>
+                </div>
+                <button class="btn btn-primary">Save Post</button>
+            </form>
+        </div>
+
+
+
+
+
+        <p>Congrats you are logged in.</p>
+        <form action="/logout" method="POST">
+            @csrf
+            <button>Log out</button>
+        </form>
     @else
         {{-- <div style="border: 3px solid black;">
     <h2>Register</h2>
