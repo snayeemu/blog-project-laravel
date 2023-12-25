@@ -55,9 +55,8 @@
                 <div class="d-flex gap-2 mb-0 ">
                     <p class="btn btn-sm btn-warning mb-0"><a class="text-white text-decoration-none"
                             href="">Edit</a></p>
-                    <form class="mb-0" action="" method="POST">
+                    <form class="mb-0" action="" method="">
                         @csrf
-                        @method('DELETE')
                         <button class="btn btn-sm btn-danger ">Delete</button>
                     </form>
                 </div>
@@ -81,9 +80,8 @@
                 <div class="d-flex gap-2 mb-0 ">
                     <p class="btn btn-sm btn-warning mb-0"><a class="text-white text-decoration-none"
                             href="">Edit</a></p>
-                    <form class="mb-0" action="" method="POST">
+                    <form class="mb-0" action="" method="">
                         @csrf
-                        @method('DELETE')
                         <button class="btn btn-sm btn-danger ">Delete</button>
                     </form>
                 </div>
