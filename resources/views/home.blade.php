@@ -12,7 +12,7 @@
 
     @auth
         <div style="border: 3px solid black;">
-            <h2>All Posts</h2>
+            {{-- <h2>All Posts</h2> --}}
 
             <div class="bg-light pt-4 px-4 m-3 rounded">
                 <h1 class="fw-bold fs-1 mb-0 ">How To Start A Blog In 2024</h1>
@@ -147,7 +147,7 @@
             <form action="/register" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Your name</label>
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
                     <input type="text" name="name" class="form-control mb-2" id="exampleInputEmail1"
                         aria-describedby="emailHelp">
 
@@ -176,7 +176,7 @@
   </div> --}}
 
         <div class="w-50 mx-auto border border-black rounded p-2 m-3">
-            <h2>Register</h2>
+            <h2>Login</h2>
             <form action="/login" method="POST">
                 @csrf
                 <div class="mb-3">

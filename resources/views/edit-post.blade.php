@@ -40,7 +40,7 @@
                 <textarea class="form-control" name="body" id="exampleFormControlTextarea1" placeholder="body content..."
                     rows="3">{{ $post->body }}</textarea>
             </div>
-            <button class="btn btn-primary">Save Post</button>
+            <button class="btn btn-primary">Save Changes </button>
         </form>
     </div>
 
