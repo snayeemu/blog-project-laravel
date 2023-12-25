@@ -122,12 +122,13 @@
 
 
 
-
-        <p>Congrats you are logged in.</p>
-        <form action="/logout" method="POST">
-            @csrf
-            <button>Log out</button>
-        </form>
+        <div class="alert alert-success" role="alert">
+            Congrats you are logged in.
+            <form action="/logout" method="POST">
+                @csrf
+                <button class="btn btn-danger">Log out</button>
+            </form>
+        </div>
     @else
         {{-- <div style="border: 3px solid black;">
     <h2>Register</h2>
